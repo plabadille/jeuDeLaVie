@@ -1,5 +1,5 @@
 package model.gameEngine;
 
-public class LifeGameEvolve {
+public class LifeGame {
 	//to do
 }
