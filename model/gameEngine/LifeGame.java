@@ -2,37 +2,40 @@ package model.gameEngine;
 
 import java.util.ArrayList;
 
+import model.fish.Fish;
+
+import java.util.ArrayList;
+
 import model.sea.*;
-import model.fish.*;
+//import model.fish.*;
 
 public class LifeGame {
 	
 	protected Sea sea;
-	protected ArrayList<Fish> fish = new ArrayList<Fish>();
-	//sea constants
-	private static final int WIDTH = 70;
-	private static final int LENGTH = 100;
-	private static final int SARDINE = 20;
-	private static final int SHARK = 6;
-	//sardine cosntants
-	private static final int deathAge = ;
-	private static final int spawnAge = ;
-	private static final int spawnRatio = ;
-	
-	int age, int spawnAge, int spawnRatio, int x, int y) {
-		super(age, spawnAge, spawnRatio, x, y
-	
-	//shark constants
+//	protected ArrayList<Fish> fish = new ArrayList<Fish>();
+	protected GameConstants gameConstants;
+	protected int round;
+	protected boolean twoSpecies;
 	
 	public LifeGame() {
 		
-		this.sea = new Sea(WIDTH, LENGTH, SARDINE, SHARK);
+		//init game:
+		this.gameConstants = new GameConstants();
+		this.sea = new Sea(this.gameConstants);
+		this.round = 0;
+		this.twoSpecies = true;
 		
-		for(int i = 0; i < SARDINE; i++) {
-			this.fish.add(new Sardine());
+		//lanch the game:
+		while(this.twoSpecies == true) {
+			
+			
+			//check if no species alive
+			ArrayList<Fish> fishAlive = sea.getFishAlive();
+			if (fishAlive.isEmpty()) {
+				this.twoSpecies = false;
+			}
 		}
 		
-		//créer les poissons
 	}
 	
 }

@@ -1,23 +1,58 @@
 package model.sea;
 
-import model.fish.Fish;
+import java.util.ArrayList;
+
+import model.fish.*;
+import model.gameEngine.GameConstants;
 
 public class Sea {
     
 	private int length;
-        private int width;
-        private Fish [][] sea ;
+    private int width;
+    private Fish [][] sea ;
+    private ArrayList<Fish> fishAlive;
         
-        
-        
-    public Sea(int length, int width, int startSardineNumber, int startSharkNumber)
-    {
-        this.length = length;
-        this.width = width;
+    public Sea(GameConstants gc) {
+        this.length = gc.getSeaLenght();
+        this.width = gc.getSeaWidth();
         
         this.sea = new Fish[width][length];
+        this.fishAlive = new ArrayList<Fish>();
+        
+        for(int i = 0; i < gc.getSeaSharkNumber(); i++) {
+        	//Need to create populate function, for first test we just populate on colon without random
+        	Shark shark = new Shark(gc.getSharkDeathAge(), gc.getSharkSpawnAge(), gc.getSharkSpawnRatio(), 0, i);
+        	this.sea[0][i] = shark;
+        	this.fishAlive.add(shark);
+        }
+        
+        for(int i = 0; i < gc.getSeaSardineNumber(); i++) {
+        	//Need to create populate function, for first test we just populate on colon without random
+        	Sardine sardine = new Sardine(gc.getSardineDeathAge(), gc.getSardineSpawnAge(), gc.getSardineSpawnRatio(), 1, i);
+        	this.sea[1][i] = sardine;
+        	this.fishAlive.add(sardine);
+        	
+        }
         
     }
 
+	public Fish[][] getSea() {
+		return sea;
+	}
+
+	public void setSea(Fish[][] sea) {
+		this.sea = sea;
+	}
+
+	public ArrayList<Fish> getFishAlive() {
+		return fishAlive;
+	}
+
+	public void setFishAlive(ArrayList<Fish> fishAlive) {
+		this.fishAlive = fishAlive;
+	}
+	
+	
+    
 }
 
