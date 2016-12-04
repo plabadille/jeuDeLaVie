@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-
 import controller.ButtonObserver;
 
 public class PanelGameButtons extends JPanel implements ActionListener {
@@ -25,11 +24,9 @@ public class PanelGameButtons extends JPanel implements ActionListener {
             b.addActionListener(this);
             add(b);
         }
-        
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		
 		String c = ((JButton) e.getSource()).getText();
         switch (c) {
             case "run":
@@ -42,7 +39,6 @@ public class PanelGameButtons extends JPanel implements ActionListener {
                 this.observer.exit(c);
                 break;
         }
-		
 	}
 
 }
