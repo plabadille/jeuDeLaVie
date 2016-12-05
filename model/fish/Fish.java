@@ -1,17 +1,15 @@
 package model.fish;
 
+import model.gameEngine.GameConstants;
+
 public abstract class Fish {
 	
-	protected int deathAge;
-	protected int spawnAge;
-	protected int spwanRatio;
+	protected GameConstants gameConstants;
 	protected int coordinateX;
 	protected int coordinateY;
 		
-	public Fish(int deathAge, int spawnAge, int spawnRatio, int x, int y) {
-		this.deathAge = deathAge;
-		this.spawnAge = spawnAge;
-		this.spwanRatio = spawnRatio;
+	public Fish(GameConstants gc, int x, int y) {
+		this.gameConstants = gc;
 		this.coordinateX = x;
 		this.coordinateY = y;
 	}

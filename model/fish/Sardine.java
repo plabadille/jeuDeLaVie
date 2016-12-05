@@ -1,9 +1,11 @@
 package model.fish;
 
+import model.gameEngine.GameConstants;
+
 public class Sardine extends Fish {
 
-	public Sardine(int deathAge, int spawnAge, int spawnRatio, int x, int y) {
-		super(deathAge, spawnAge, spawnRatio, x, y);
+	public Sardine(GameConstants gc, int x, int y) {
+		super(gc, x, y);
 	}
 	
 	public void dead() {
