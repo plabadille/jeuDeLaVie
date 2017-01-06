@@ -20,7 +20,7 @@ public class ChildStrategy implements IStateBehaviour {
 		
 		//The state change when the constants age is reached:
 		if(++this.callNumber == this.gameConstants.getSharkIsYoung()) {
-			context.setState(new YoungStrategy(this.gameConstants));
+			context.setState(new TeenagerStrategy(this.gameConstants));
 		}
 		
 	}
