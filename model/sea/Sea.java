@@ -1,12 +1,14 @@
+
 package model.sea;
 
 import java.util.ArrayList;
 
 import model.fish.*;
 import model.gameEngine.GameConstants;
+import model.sea.populate.*;
 
 public class Sea {
-    
+	//TO DO Une méthode voisinage par exemple pourrait renvoyer un tableau de 8 cases par exemple
 	private int length;
     private int width;
     private Fish [][] sea ;
@@ -20,21 +22,37 @@ public class Sea {
         this.sea = new Fish[width][length];
         this.fishAlive = new ArrayList<Fish>();
         
-        for(int i = 0; i < gc.getSeaSharkNumber(); i++) {
-        	//Need to create populate function, for first test we just populate on colon without random
-        	Shark shark = new Shark(gc, 0, i);
-        	this.sea[0][i] = shark;
-        	this.fishAlive.add(shark);
-        }
+        populateSea(gc);
         
-        for(int i = 0; i < gc.getSeaSardineNumber(); i++) {
-        	//Need to create populate function, for first test we just populate on colon without random
-        	Sardine sardine = new Sardine(gc, 1, i);
-        	this.sea[1][i] = sardine;
-        	this.fishAlive.add(sardine);
-        	
+        for(int x = 0; x < this.length; x++) {
+        	for(int y = 0; y < this.width; y++) {
+        		if (sea[x][y] != null) {
+        			this.fishAlive.add(sea[x][y]);
+        		}
+        	}
         }
-        
+
+    }
+    
+    private void populateSea(GameConstants gc) {
+    	
+    	int seaSize = this.length * this.width;
+    	int fishNb = gc.getSeaSharkNumber() + gc.getSeaSardineNumber();
+    	float populationRate = fishNb / seaSize;
+    	
+    	IStrategyPopulate strategy;
+    	if (populationRate > 0 && populationRate <= 0.2) {
+    		strategy = new RandomStrategy();
+    	} else if (populationRate > 0.2 && populationRate <= 0.4) {
+    		strategy = new FreeCellRandom();
+    	} else {
+    		strategy = new PermutationRandom();
+    	}
+    	
+    	Context context = new Context(strategy);
+    	
+    	this.sea = context.executeStrategy(gc, this.sea);
+    	
     }
 
 	public Fish[][] getSea() {
