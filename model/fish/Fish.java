@@ -68,5 +68,14 @@ public abstract class Fish {
         return false;
 
     }
+    
+    public abstract int getCoordinateX();
+
+    public abstract int getCoordinateY();
+
+    public abstract void setCoordinateX(int coordinateX);
+
+    public abstract void setCoordinateY(int coordinateY);
+     
 
 }
