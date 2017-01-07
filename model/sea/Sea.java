@@ -16,8 +16,8 @@ public class Sea {
         
     public Sea(GameConstants gc) {
     	
-        this.row = gc.getSeaLenght();
-        this.column = gc.getSeaWidth();
+        this.row = gc.getSeaWidth();
+        this.column = gc.getSeaLenght();
         
         this.sea = new Fish[column][row];
         this.fishAlive = new ArrayList<Fish>();
@@ -36,9 +36,11 @@ public class Sea {
     
     private void populateSea(GameConstants gc) {
     	
-    	int seaSize = this.row * this.column;
-    	int fishNb = gc.getSeaSharkNumber() + gc.getSeaSardineNumber();
-    	float populationRate = fishNb / seaSize;
+    	double seaSize = this.row * this.column;
+    	double fishNb = gc.getSeaSharkNumber() + gc.getSeaSardineNumber();
+    	double populationRate = fishNb / seaSize;
+    	System.out.println("fishNb: " + fishNb + " . seaSize: " + seaSize);
+    	System.out.println("populationRate: " + populationRate);
     	
     	IStrategyPopulate strategy;
     	if (populationRate > 0 && populationRate <= 0.2) {
