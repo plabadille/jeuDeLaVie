@@ -81,17 +81,13 @@ public class AdultStrategy implements IStateBehaviour {
 				}
 				
 				if (optimalMove != null) {
-					//TO DO Use generic function? super.move() ?
+					shark.starve();
 					sea.moveFish(shark, x+optimalMove.getDirectionX(), y+optimalMove.getDirectionY());
 				} else { //no more sardine, the game should end.
 					System.out.println("no more Sardine or error in move() function of AdultShark");
 				}
-				
 			} else { //the sardine is one move close to the shark, we just have to eat it.
-				//TO DO Use generic function? super.move() ?
-				//TO DO: delete below and call the eat function
-				//TO DO Update boolean when sardine is eaten
-				sea.deleteFish(closestSardine);
+				shark.eat(closestSardine, sea);
 				sea.moveFish(shark, xSardine, ySardine);
 			}
 		} else { //no more sardine, the game should end.

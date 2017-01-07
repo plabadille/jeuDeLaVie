@@ -13,22 +13,15 @@ public class ChildStrategy implements IStateBehaviour {
 		this.gameConstants = gc;
 	}
 	
-	public void dead(Context context) {
-		//to do
-	}
-	
 	public void move(Context context, Sea sea, Shark shark) {
-		//to do
 		
 		//The state change when the constants age is reached:
 		if(++this.callNumber == this.gameConstants.getSharkIsYoung()) {
 			context.setState(new TeenagerStrategy(this.gameConstants));
 		}
 		
+		shark.randomMove(sea);
+		
 	}
-	
-	public void eatSardine(Context context) {
-		//to do
-	}
-	
+		
 }

@@ -18,18 +18,37 @@ public abstract class Fish {
         this.coordinateY = y;
 
     }
-
-    public abstract void dead();
-
-    public abstract void move(Sea sea);
     
-    public abstract int getCoordinateX();
+    //method call by the LifeGame for each Fish each new turn.
+    public void playRound(Sea sea) {
+    	this.giveBirth(sea);
+    	this.move(sea);
+    	boolean alive = this.dead(sea);
+    	if (alive) {
+    		this.birth++;
+    	}
+    }
 
-    public abstract int getCoordinateY();
+    protected abstract boolean dead(Sea sea);
 
-    public abstract void setCoordinateX(int coordinateX);
+    protected abstract void move(Sea sea);
+    
+    protected abstract void giveBirth(Sea sea);
+    
+    public int getCoordinateX() {
+        return coordinateX;
+    }
 
-    public abstract void setCoordinateY(int coordinateY);
-     
+    public int getCoordinateY() {
+        return coordinateY;
+    }
 
+    public void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
+    }
+
+    public void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
+    }
+    
 }
