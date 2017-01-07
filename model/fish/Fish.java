@@ -3,7 +3,6 @@ package model.fish;
 import model.gameEngine.GameConstants;
 
 import model.sea.Sea;
-import model.gameEngine.Direction;
 
 public abstract class Fish {
 
