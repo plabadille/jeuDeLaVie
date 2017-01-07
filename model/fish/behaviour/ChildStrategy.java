@@ -2,6 +2,7 @@ package model.fish.behaviour;
 
 import model.gameEngine.GameConstants;
 import model.sea.Sea;
+import model.fish.Shark;
 
 public class ChildStrategy implements IStateBehaviour {
 	private int callNumber; //can be consider as the age of the fish
@@ -16,7 +17,7 @@ public class ChildStrategy implements IStateBehaviour {
 		//to do
 	}
 	
-	public void move(Context context, Sea sea) {
+	public void move(Context context, Sea sea, Shark shark) {
 		//to do
 		
 		//The state change when the constants age is reached:

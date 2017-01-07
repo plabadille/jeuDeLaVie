@@ -2,6 +2,7 @@ package model.fish.behaviour;
 
 import model.gameEngine.GameConstants;
 import model.sea.Sea;
+import model.fish.*;
 
 public class Context {
 	
@@ -21,8 +22,8 @@ public class Context {
 	      return this.state;
 	   }
 	   
-	   public void move(Sea sea) {
-		   this.state.move(this, sea);
+	   public void move(Sea sea, Shark shark) {
+		   this.state.move(this, sea, shark);
 	   }
 	   
 }

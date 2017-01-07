@@ -21,7 +21,7 @@ public class Shark extends Fish
 
     @Override
     public void move(Sea sea) {
-        this.context.move(sea);
+        this.context.move(sea, this);
     }
 	
     public void eatSardine() {

@@ -2,6 +2,7 @@ package model.fish.behaviour;
 
 import model.gameEngine.GameConstants;
 import model.sea.Sea;
+import model.fish.Shark;
 
 public class TeenagerStrategy implements IStateBehaviour {
 	
@@ -13,7 +14,7 @@ public class TeenagerStrategy implements IStateBehaviour {
 		this.callNumber = this.gameConstants.getSharkIsYoung();
 	}
 	
-	public void move(Context context, Sea sea) {
+	public void move(Context context, Sea sea, Shark shark) {
 		//to do
 		//The state change when the constants age is reached:
 		if(++this.callNumber == this.gameConstants.getSharkIsAdult()) {

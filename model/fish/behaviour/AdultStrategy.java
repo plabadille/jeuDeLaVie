@@ -17,7 +17,7 @@ public class AdultStrategy implements IStateBehaviour {
 //		this.callNumber = this.gameConstants.getSharkIsAdult();	
 //	}
 	
-	public void move(Context context, Sea sea) {
+	public void move(Context context, Sea sea, Shark shark) {
 		//to do
 		//no next step if it's an adult.
 		ArrayList<Fish> fishAlive = sea.getFishAlive();
