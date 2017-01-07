@@ -95,33 +95,33 @@ public class Sea {
 		this.fishAlive.add(shark);
 	}
 	
-	public HashMap<String,Fish> getNeighborhood(Fish fish) {
+	public HashMap<Direction,Fish> getNeighborhood(Fish fish) {
 		
 		int x = fish.getCoordinateX();
 		int y = fish.getCoordinateY();		
-		HashMap<String,Fish> neighborhood = new HashMap<String,Fish>();
+		HashMap<Direction,Fish> neighborhood = new HashMap<Direction,Fish>();
 		
 		//We store the possible neighbor in a hashMap. If there is no neighbor in a possible move, we don't add the move.
 		if (x-1 >= 0) {
-			neighborhood.put("LEFT", this.sea[x-1][y]);
+			neighborhood.put(Direction.getLEFT(), this.sea[x-1][y]);
 			if (y-1 >= 0)
-				neighborhood.put("DOWN_LEFT", this.sea[x-1][y-1]);
+				neighborhood.put(Direction.getDOWN_LEFT(), this.sea[x-1][y-1]);
 			if (y+1 <= this.row-1)
-				neighborhood.put("TOP_LEFT", this.sea[x-1][y+1]);
+				neighborhood.put(Direction.getTOP_LEFT(), this.sea[x-1][y+1]);
 		}
 		
 		if (x+1 <= this.column-1) {
-			neighborhood.put("RIGHT", this.sea[x+1][y]);
+			neighborhood.put(Direction.getRIGHT(), this.sea[x+1][y]);
 			if (y-1 >= 0)
-				neighborhood.put("DOWN_RIGHT", this.sea[x+1][y-1]);
+				neighborhood.put(Direction.getDOWN_RIGHT(), this.sea[x+1][y-1]);
 			if (y+1 <= this.row-1)
-				neighborhood.put("TOP_RIGHT", this.sea[x+1][y+1]);
+				neighborhood.put(Direction.getTOP_RIGHT(), this.sea[x+1][y+1]);
 		}
 		
 		if (y-1 >= 0)
-			neighborhood.put("DOWN", this.sea[x][y-1]);
+			neighborhood.put(Direction.getDOWN(), this.sea[x][y-1]);
 		if (y+1 <= this.row-1)
-			neighborhood.put("TOP", this.sea[x][y+1]);
+			neighborhood.put(Direction.getTOP(), this.sea[x][y+1]);
 		
 		return neighborhood;
 		
