@@ -81,6 +81,18 @@ public class Sea {
 		this.fishAlive.remove(fish);
 	}
 	
+	public void createSardine(int x, int y, GameConstants gc) {
+		Sardine sardine = new Sardine(gc, x, y);
+		this.sea[x][y] = sardine;
+		this.fishAlive.add(sardine);
+	}
+	
+	public void createShark(int x, int y, GameConstants gc) {
+		Shark shark = new Shark(gc, x, y);
+		this.sea[x][y] = shark;
+		this.fishAlive.add(shark);
+	}
+	
 	public HashMap<String,Fish> getNeighborhood(Fish fish) {
 		
 		int x = fish.getCoordinateX();
