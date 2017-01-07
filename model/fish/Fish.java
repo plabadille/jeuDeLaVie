@@ -24,12 +24,12 @@ public abstract class Fish {
     public abstract void move(Sea sea);
 
     /**
-     * Method which consist of determined the neighbors squares
+     * Method which consist of determine the possible neighbourhood squares
      *
      * @param sea
      * @return
      */
-    public int[][] neighbourhood(Sea sea) {
+    public int[][] possibleNeighbourhoodSquares(Sea sea) {
 
         neighborsSquares = new int[8][8];
         int x = coordinateX;
