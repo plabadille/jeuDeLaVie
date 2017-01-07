@@ -1,5 +1,10 @@
 package model.fish.behaviour;
 
+import java.util.ArrayList;
+
+import model.fish.*;
+import model.sea.Sea;
+
 //import model.gameEngine.GameConstants;
 
 public class AdultStrategy implements IStateBehaviour {
@@ -12,10 +17,11 @@ public class AdultStrategy implements IStateBehaviour {
 //		this.callNumber = this.gameConstants.getSharkIsAdult();	
 //	}
 	
-	public void move(Context context) {
+	public void move(Context context, Sea sea) {
 		//to do
-		
 		//no next step if it's an adult.
+		ArrayList<Fish> fishAlive = sea.getFishAlive();
+		
 	}
 	
 }
