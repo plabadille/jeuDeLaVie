@@ -17,6 +17,7 @@ public class PermutationRandom implements IStrategyPopulate {
 		this.xLenght = gc.getSeaLenght();
 		this.x = 0;
 		this.y = 0;
+		this.populatedSea = sea;
 		Shark shark;
 		Sardine sardine;
 		

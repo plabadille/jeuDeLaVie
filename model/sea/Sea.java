@@ -9,7 +9,6 @@ import model.gameEngine.GameConstants;
 import model.sea.populate.*;
 
 public class Sea {
-	//TO DO Une méthode voisinage par exemple pourrait renvoyer un tableau de 8 cases par exemple
 	private int row;
     private int column;
     private Fish [][] sea ;
@@ -43,10 +42,13 @@ public class Sea {
     	
     	IStrategyPopulate strategy;
     	if (populationRate > 0 && populationRate <= 0.2) {
+    		System.out.println("randomStrategy on");
     		strategy = new RandomStrategy();
     	} else if (populationRate > 0.2 && populationRate <= 0.4) {
+    		System.out.println("free celle random strategy on");
     		strategy = new FreeCellRandom();
     	} else {
+    		System.out.println("permutation random strategy on");
     		strategy = new PermutationRandom();
     	}
     	
