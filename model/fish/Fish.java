@@ -22,51 +22,6 @@ public abstract class Fish {
     public abstract void dead();
 
     public abstract void move(Sea sea);
-
-    /**
-     * Method which consist of determine the possible neighbourhood squares
-     *
-     * @param sea
-     * @return
-     */
-    public int[][] possibleNeighbourhoodSquares(Sea sea) {
-
-        neighborsSquares = new int[8][8];
-        int x = coordinateX;
-        int y = coordinateY;
-        int i = 0;
-        for (Direction t : Direction.values()) {
-            neighborsSquares[0][i] = x + t.getDirectionX();
-            neighborsSquares[1][i] = y + t.getDirectionY();
-            System.out.println("direction x :" + t.getDirectionX() + " Direction y :" + t.getDirectionY());
-            i++;
-        }
-        //display possible coordinates to control
-        for (int j = 0; j < neighborsSquares.length; j++) {
-            System.out.println("coordonnées possible : x:" + neighborsSquares[0][j] + ",y:" + neighborsSquares[1][j]);
-        }
-
-        return neighborsSquares;
-    }
-
-    public boolean emptySquare(Sea sea) {
-
-        //checkout empty coordinates
-        for (int i=0; i<sea.getSea().length;i++) {
-            for (int[] n : neighborsSquares) {
-                if (sea.getSea()[coordinateX][coordinateY] != null) {
-                    System.out.println("un poisson trouvé à la case : "+sea.getSea()[coordinateX][coordinateY]);
-                    return true;
-                }
-                else{
-                    System.out.println("pas de poisson trouvé à la case : "+sea.getSea()[coordinateX][coordinateY]);
-                }
-            }
-        }
-        System.out.println("aucun poisson trouvé...");
-        return false;
-
-    }
     
     public abstract int getCoordinateX();
 
