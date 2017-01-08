@@ -28,8 +28,7 @@ public class PanelGame extends JPanel{
             gameBoardSize = new Dimension(getSize().width/BLOCK_SIZE-2, getSize().height/BLOCK_SIZE-2);
              System.out.println("size largeur : "+getSize().height);
             //gameboard = new boolean[80][60];
-            
-            
+                       
             
         }
         

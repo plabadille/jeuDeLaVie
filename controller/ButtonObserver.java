@@ -20,8 +20,8 @@ public class ButtonObserver {
 	}
 	
 	public void exit(String c) {
-		//to do
-		//should use an exit method from the assembled view
+		System.exit(0);
+		
 	}
 	
 }

@@ -15,6 +15,11 @@ import javax.swing.JTextField;
  */
 public class PanelGameConstants extends JPanel{
     
+    private JTextField seaWidthText,seaLengthText,seaSardineNumberText, seaSharkNumberText, sardineDeathAgeText, sardineSpawnAgeText, sardineSpawnRatioText, sharkDeathAgeText,
+            sharkStarvingTimeText,sharkSpawnAgeText, sharkSpawnRatioText, sharkIsYoungText, sharkIsTeenagerText, sharkIsAdultText;
+    private JLabel seaWidthLabel,seaLengthLabel, seaSardineNumberLabel, seaSharkNumberLabel, sardineDeathAgeLabel,sardineSpawnAgeLabel,sardineSpawnRatioLabel, sharkDeathAgeLabel,
+            sharkStarvingTimeLabel,sharkSpawnAgeLabel, sharkSpawnRatioLabel, sharkIsYoungLabel,sharkIsTeenagerLabel,sharkIsAdultLabel;
+    
     public PanelGameConstants()
     {
         initJPanel();
@@ -25,86 +30,86 @@ public class PanelGameConstants extends JPanel{
              
     //add textfields & labels
         //sea width
-        JLabel seaWidthLabel = new JLabel("Sea width int : ");
-        JTextField seaWidthText = new JTextField();
+        seaWidthLabel = new JLabel("Sea width int : ");
+        seaWidthText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(seaWidthLabel);
         this.add(seaWidthText);
         //sea length
-        JLabel seaLengthLabel = new JLabel("Sea length int : ");
-        JTextField seaLengthText = new JTextField();
+        seaLengthLabel = new JLabel("Sea length int : ");
+        seaLengthText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(seaLengthLabel);
         this.add(seaLengthText);
         //seaSardineNumber
-        JLabel seaSardineNumberLabel = new JLabel("Sea # sardine(s) int : ");
-        JTextField seaSardineNumberText = new JTextField();
+        seaSardineNumberLabel = new JLabel("Sea # sardine(s) int : ");
+        seaSardineNumberText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(seaSardineNumberLabel);
         this.add(seaSardineNumberText);
         //seaSharkNumber
-        JLabel seaSharkNumberLabel = new JLabel("Sea # shark(s) int : ");
-        JTextField seaSharkNumberText = new JTextField();
+        seaSharkNumberLabel = new JLabel("Sea # shark(s) int : ");
+        seaSharkNumberText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(130, 30));
         this.add(seaSharkNumberLabel);
         this.add(seaSharkNumberText); 
         //sardineDeathAge
-        JLabel sardineDeathAgeLabel = new JLabel("Sardine death age int : ");
-        JTextField sardineDeathAgeText = new JTextField();
+        sardineDeathAgeLabel = new JLabel("Sardine death age int : ");
+        sardineDeathAgeText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sardineDeathAgeLabel);
         this.add(sardineDeathAgeText); 
         //sardineSpawnAge
-        JLabel sardineSpawnAgeLabel = new JLabel("Sardine spawn age int : ");
-        JTextField sardineSpawnAgeText = new JTextField();
+        sardineSpawnAgeLabel = new JLabel("Sardine spawn age int : ");
+        sardineSpawnAgeText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sardineSpawnAgeLabel);
         this.add(sardineSpawnAgeText); 
         //sardineSpawnRatio
-        JLabel sardineSpawnRatioLabel = new JLabel("Sardine spawn ratio int : ");
-        JTextField sardineSpawnRatioText = new JTextField();
+        sardineSpawnRatioLabel = new JLabel("Sardine spawn ratio int : ");
+        sardineSpawnRatioText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(130, 30));
         this.add(sardineSpawnRatioLabel);
         this.add(sardineSpawnRatioText);
         //sharkDeathAge
-        JLabel sharkDeathAgeLabel = new JLabel("Shark death age int : ");
-        JTextField sharkDeathAgeText = new JTextField();
+        sharkDeathAgeLabel = new JLabel("Shark death age int : ");
+        sharkDeathAgeText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sharkDeathAgeLabel);
         this.add(sharkDeathAgeText);        
         //sharkStarvingTime
-        JLabel sharkStarvingTimeLabel = new JLabel("Shark starving time int : ");
-        JTextField sharkStarvingTimeText = new JTextField();
+        sharkStarvingTimeLabel = new JLabel("Shark starving time int : ");
+        sharkStarvingTimeText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sharkStarvingTimeLabel);
         this.add(sharkStarvingTimeText);        
         //sharkSpawnAge
-        JLabel sharkSpawnAgeLabel = new JLabel("Shark spawn age int : ");
-        JTextField sharkSpawnAgeText = new JTextField();
+        sharkSpawnAgeLabel = new JLabel("Shark spawn age int : ");
+        sharkSpawnAgeText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sharkSpawnAgeLabel);
         this.add(sharkSpawnAgeText);       
         //sharkSpawnRatio
-        JLabel sharkSpawnRatioLabel = new JLabel("Shark spawn ratio int : ");
-        JTextField sharkSpawnRatioText = new JTextField();
+        sharkSpawnRatioLabel = new JLabel("Shark spawn ratio int : ");
+        sharkSpawnRatioText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sharkSpawnRatioLabel);
         this.add(sharkSpawnRatioText);
         //sharkIsYoung
-        JLabel sharkIsYoungLabel = new JLabel("Shark is Young strategy int : ");
-        JTextField sharkIsYoungText = new JTextField();
+        sharkIsYoungLabel = new JLabel("Shark is Young strategy int : ");
+        sharkIsYoungText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sharkIsYoungLabel);
         this.add(sharkIsYoungText);
         //sharkIsTeenager
-        JLabel sharkIsTeenagerLabel = new JLabel("Shark is Teenager strategy int : ");
-        JTextField sharkIsTeenagerText = new JTextField();
+        sharkIsTeenagerLabel = new JLabel("Shark is Teenager strategy int : ");
+        sharkIsTeenagerText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sharkIsTeenagerLabel);
         this.add(sharkIsTeenagerText);
         //sharkIsAdult
-        JLabel sharkIsAdultLabel = new JLabel("Shark is Adult strategy int : ");
-        JTextField sharkIsAdultText = new JTextField();
+        sharkIsAdultLabel = new JLabel("Shark is Adult strategy int : ");
+        sharkIsAdultText = new JTextField();
         seaWidthText.setPreferredSize(new Dimension(60, 30));
         this.add(sharkIsAdultLabel);
         this.add(sharkIsAdultText);
@@ -114,4 +119,6 @@ public class PanelGameConstants extends JPanel{
         this.setLayout(new GridLayout(14, 3, 10, 10));
         this.setBackground(Color.LIGHT_GRAY);
     }
+
+
 }
