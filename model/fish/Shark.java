@@ -65,8 +65,8 @@ public class Shark extends Fish {
 
         //second we select randomly one move
         int random = (int) (Math.random() * directionRandomTable.size());
-        int x = directionRandomTable.get(random).getDirectionX();
-        int y = directionRandomTable.get(random).getDirectionY();
+        int x = directionRandomTable.get(random).getDirectionX() + this.getCoordinateX();
+        int y = directionRandomTable.get(random).getDirectionY() + this.getCoordinateY();
         Fish fish = fishRandomTable.get(random);
 
         //then we check if there's something to eat and do the move.
