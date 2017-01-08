@@ -12,8 +12,8 @@ public class GameConstants {
 
     //Default settings:
     //sea constants
-    private static final int SEA_WIDTH = 70;
-    private static final int SEA_LENGTH = 100;
+    private static final int SEA_WIDTH = 20;
+    private static final int SEA_LENGTH = 30;
     private static final int SEA_NUMBER_SARDINE = 20;
     private static final int SEA_NUMBER_SHARK = 6;
     //sardine constants

@@ -24,22 +24,21 @@ public class Sardine extends Fish {
         directionRandomTable = new ArrayList<Direction>();
         int x = 0, y = 0;
         Direction moveChoice;
-        //testrécupération des coordonnées
-        System.out.println("coordonnées actuelle x :" + coordinateX + "coordonnées actuelle y : " + coordinateY + " Ma ref : " + getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(this)));
         //retrieve neighbourhood
-        System.out.println("voisin de l'instance en cours : " + sea.getNeighborhood(this));
         for (Map.Entry<Direction, Fish> e : sea.getNeighborhood(this).entrySet()) {
-            //Display Hashmap values of Sardine
             if (e.getValue() == null) {
-                System.out.println("[" + e.getKey() + "] -> " + e.getValue());
                 directionRandomTable.add(e.getKey());
             }
         }
         moveChoice = randomlyChooseMove(directionRandomTable);
-        System.out.println("Direction tirée au sort : " + moveChoice.name() + " x:[" + moveChoice.getDirectionX() + "] y : [" + moveChoice.getDirectionY() + "]");
-        x = coordinateX + moveChoice.getDirectionX();
-        y = coordinateY + moveChoice.getDirectionY();
-        sea.moveFish(this, x, y);
+        if (moveChoice != null) {
+        	x = coordinateX + moveChoice.getDirectionX();
+            y = coordinateY + moveChoice.getDirectionY();
+            sea.moveFish(this, x, y);
+        } else {
+        	System.out.println("The sardine can't move because there's other fish all around");
+        }
+        
     }
 
     /**
@@ -51,10 +50,11 @@ public class Sardine extends Fish {
     private Direction randomlyChooseMove(ArrayList<Direction> d) {
         //drawing a lot of direction
         int max = d.size();
+        if (max == 0) { //the fish can't move.
+        	return null;
+        }
         int randomDraw = (int) (Math.random() * (max));
-        System.out.println("Tirage au sort : " + randomDraw);
         Direction randomDirection = d.get(randomDraw);
-        System.out.println("Direction tirée au sort : " + randomDirection.name() + " x:[" + randomDirection.getDirectionX() + "] y : [" + randomDirection.getDirectionY() + "]");
         return randomDirection;
 
     }

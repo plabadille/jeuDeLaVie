@@ -64,18 +64,23 @@ public class Shark extends Fish {
         }
 
         //second we select randomly one move
-        int random = (int) (Math.random() * directionRandomTable.size());
-        int x = directionRandomTable.get(random).getDirectionX() + this.getCoordinateX();
-        int y = directionRandomTable.get(random).getDirectionY() + this.getCoordinateY();
-        Fish fish = fishRandomTable.get(random);
-
-        //then we check if there's something to eat and do the move.
-        if (fish == null) {
-            this.starve();
-            sea.moveFish(this, x, y);
+        if (directionRandomTable.size() != 0) {       
+		    int random = (int) (Math.random() * directionRandomTable.size());
+		    int x = directionRandomTable.get(random).getDirectionX() + this.getCoordinateX();
+		    int y = directionRandomTable.get(random).getDirectionY() + this.getCoordinateY();
+		    Fish fish = fishRandomTable.get(random);
+		
+		    //then we check if there's something to eat and do the move.
+		    if (fish == null) {
+		        this.starve();
+		        sea.moveFish(this, x, y);
+		    } else {
+		        this.eat(fish, sea);
+		        sea.moveFish(this, x, y);
+		    }
         } else {
-            this.eat(fish, sea);
-            sea.moveFish(this, x, y);
+        	this.starve();
+        	System.out.println("The shark can't move because there's other Sharks all around");
         }
     }
     
@@ -87,6 +92,7 @@ public class Shark extends Fish {
      */
     public void eat(Fish sardine, Sea sea) {
         if (sardine != null) {
+        	System.out.println("" + this + " eat " + sardine);
             this.starvingTime = gameConstants.getSharkStarvingTime();
             sea.deleteFish(sardine);
         }
@@ -97,6 +103,7 @@ public class Shark extends Fish {
      * Call by move() or randomMove()
      */
     public void starve() {
+        System.out.println("" + this + " doesn't eat this turn. It still have " + this.starvingTime + "turn to eat something before dying of starve");
         this.starvingTime--;
     }
 

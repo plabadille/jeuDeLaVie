@@ -42,6 +42,7 @@ public abstract class Fish {
      * @param sea <Sea> An instance containing the Sea.
      */
     public void playRound(Sea sea) {
+		System.out.println("" + this + " actual coordinate are: x[" + this.getCoordinateX() + "], y[" + this.getCoordinateY() + "]");
         this.giveBirth(sea);
         this.move(sea);
         if (!this.dead(sea)) {
@@ -90,7 +91,11 @@ public abstract class Fish {
                 Direction key = entry.getKey();
                 Fish value = entry.getValue();
                 if (value == null) {
-                    sea.createShark(this.getCoordinateX() + key.getDirectionX(), this.getCoordinateY() + key.getDirectionY(), gameConstants);
+                	if (this instanceof Shark) {
+                        sea.createShark(this.getCoordinateX() + key.getDirectionX(), this.getCoordinateY() + key.getDirectionY(), gameConstants);
+                	} else {
+                        sea.createSardine(this.getCoordinateX() + key.getDirectionX(), this.getCoordinateY() + key.getDirectionY(), gameConstants);
+                	}
                     break;
                 }
             }

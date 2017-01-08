@@ -35,6 +35,7 @@ public class TeenagerStrategy implements IStateBehaviour {
 		//The state change when the constants age is reached:
 		if(++this.callNumber == this.gameConstants.getSharkIsAdult()) {
 			context.setState(new AdultStrategy());
+			System.out.println("This Shark is now a Adult Sharks, he's " + this.callNumber + "years old");
 		}
 		
 		Fish sardineToEat = null;

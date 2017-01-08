@@ -37,6 +37,10 @@ public class LifeGame {
 	public void quickRunGame() {
 		while(this.twoSpeciesALive) {
 			if (this.checkIfTwoSpeciesAlive()) {
+				System.out.println("\n===============================================\n");
+				System.out.println("Lauching the cycle " + this.round);
+				System.out.println("Still " + this.sea.getSharkAlive() + " shark alive and " + this.sea.getSardineAlive() + " sardine alive");
+				System.out.println("\n===============================================\n");
 				this.playRound();
 			}
 		}
@@ -94,24 +98,29 @@ public class LifeGame {
 			if (fish == null) {
 				keepLooping = false;
 			} else {
+				System.out.println("\n***********************************************\n");
+				System.out.println("Start " + fish + " turn");
+				System.out.println("\n***********************************************\n");
 				fish.playRound(this.sea);
 			}
 			i++;
 		} 
-		
 	}
 	
 	/**
      * Method used to end the game and display a recap
      */
 	private void endGame() {
-		System.out.println("The game ended in " + this.round + " game cycle");
+		int round = this.round -1;
+		System.out.println("\n===============================================\n");
+		System.out.println("\nEnd of the game\n");
+		System.out.println("\n===============================================\n");
+		System.out.println("The game ended in " + round + " game cycle");
 		if (this.winnerSpecies != null) {
 			System.out.println("The species who survive is the  " + this.winnerSpecies + "!");
 		} else {
 			System.out.println("No species survive... They both die in the same cycle.");
-		}
-		
+		}		
 	}
 
 }

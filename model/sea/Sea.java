@@ -18,6 +18,8 @@ public class Sea {
     private int column;
     private Fish [][] sea ;
     private ArrayList<Fish> fishAlive;
+    private int sardineAlive;
+    private int sharkAlive;
     
     /**
      * Builds a new populated sea.
@@ -25,12 +27,17 @@ public class Sea {
      * @param gc <GameConstants> An instance containing every Game Constants of the current game
      */
     public Sea(GameConstants gc) {
-    	
+    	System.out.println("\n===============================================\n");
+    	System.out.println("Initialization");
+    	System.out.println("\n===============================================\n");
         this.row = gc.getSeaWidth();
         this.column = gc.getSeaLenght();
         
         this.sea = new Fish[column][row];
+        System.out.println("->The sea is create with x:[" + this.column + "], y:[" + this.row + "]");
         this.fishAlive = new ArrayList<Fish>();
+        this.sardineAlive = gc.getSeaSardineNumber();
+        this.sharkAlive = gc.getSeaSharkNumber();
         
         populateSea(gc);
         
@@ -41,7 +48,6 @@ public class Sea {
         		}
         	}
         }
-
     }
     
     /**
@@ -59,19 +65,19 @@ public class Sea {
     	
     	IStrategyPopulate strategy;
     	if (populationRate > 0 && populationRate <= 0.2) {
-    		System.out.println("randomStrategy on");
+    		System.out.println("random population strategy on");
     		strategy = new RandomStrategy();
     	} else if (populationRate > 0.2 && populationRate <= 0.4) {
-    		System.out.println("free celle random strategy on");
+    		System.out.println("free cells random population strategy on");
     		strategy = new FreeCellRandom();
     	} else {
-    		System.out.println("permutation random strategy on");
+    		System.out.println("permutation random population strategy on");
     		strategy = new PermutationRandom();
     	}
     	
     	Context context = new Context(strategy);
-    	
     	this.sea = context.executeStrategy(gc, this.sea);
+    	System.out.println("->The sea has been populated with shark:[" + gc.getSeaSharkNumber() + "], sardine:[" + gc.getSeaSardineNumber() + "]");
     	
     }
     
@@ -101,6 +107,7 @@ public class Sea {
      * @param y <int> new y coordinate for the Fish (row)
      */
 	public void moveFish(Fish fish, int x, int y) {
+		System.out.println("" + fish + " move in coordinate: x[" + x + "], y[" + y + "]");
 		this.sea[x][y] = this.sea[fish.getCoordinateX()][fish.getCoordinateY()];
 		this.sea[fish.getCoordinateX()][fish.getCoordinateY()] = null;
 		fish.setCoordinateX(x);
@@ -113,6 +120,12 @@ public class Sea {
      * @param fish <Fish> instance of Fish to remove from the game
      */
 	public void deleteFish(Fish fish) {
+		if (fish instanceof Shark) {
+			this.sharkAlive--;
+		} else {
+			this.sardineAlive--;
+		}
+		System.out.println("" + fish + " is dead");
 		int x = fish.getCoordinateX();
 		int y = fish.getCoordinateY();
 		
@@ -128,7 +141,9 @@ public class Sea {
      * @param gc <GameConstants> An instance containing every Game Constants of the current game
      */
 	public void createSardine(int x, int y, GameConstants gc) {
+		this.sardineAlive++;
 		Sardine sardine = new Sardine(gc, x, y);
+		System.out.println("" + sardine + " is born in coordinate: x[" + x + "], y[" + y + "]");
 		this.sea[x][y] = sardine;
 		this.fishAlive.add(sardine);
 	}
@@ -141,7 +156,9 @@ public class Sea {
      * @param gc <GameConstants> An instance containing every Game Constants of the current game
      */
 	public void createShark(int x, int y, GameConstants gc) {
+		this.sharkAlive++;
 		Shark shark = new Shark(gc, x, y);
+		System.out.println("" + shark + " is born in coordinate: x[" + x + "], y[" + y + "]");
 		this.sea[x][y] = shark;
 		this.fishAlive.add(shark);
 	}
@@ -215,5 +232,13 @@ public class Sea {
 			return this.fishAlive.get(index);
 		}
 		return null;
+	}
+
+	public int getSardineAlive() {
+		return sardineAlive;
+	}
+
+	public int getSharkAlive() {
+		return sharkAlive;
 	}
 }

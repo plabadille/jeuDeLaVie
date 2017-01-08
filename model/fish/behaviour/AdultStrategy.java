@@ -38,7 +38,7 @@ public class AdultStrategy implements IStateBehaviour {
 				} else {
 					roundToGetSardine = abs(y-ySardine);
 				}
-				if (roundToGetSardine > closestRound){
+				if (roundToGetSardine < closestRound){
 					closestSardine = fish;
 					closestRound = roundToGetSardine;
 					//if a sardine is near the shark we don't need to keep searching
@@ -76,7 +76,7 @@ public class AdultStrategy implements IStateBehaviour {
 						}
 				    	
 				    	//if we find a closest sardine than before we update values
-				    	if (roundToGetSardine > closestRound){ 
+				    	if (roundToGetSardine < closestRound){ 
 				    		optimalMove = key;
 							closestRound = roundToGetSardine;
 							//if a sardine is two round from the shark we stop, it's the best case
@@ -89,8 +89,8 @@ public class AdultStrategy implements IStateBehaviour {
 				if (optimalMove != null) {
 					shark.starve();
 					sea.moveFish(shark, x+optimalMove.getDirectionX(), y+optimalMove.getDirectionY());
-				} else { //no more sardine, the game should end.
-					System.out.println("no more Sardine or error in move() function of AdultShark");
+				} else { //The shark is stuck between other sharks
+					System.out.println("The Shark can't move because there's other sharks all around");
 				}
 			} else { //the sardine is one move close to the shark, we just have to eat it.
 				shark.eat(closestSardine, sea);
