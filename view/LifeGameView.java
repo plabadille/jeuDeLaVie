@@ -9,9 +9,9 @@ package view;
 import controller.ButtonObserver;
 import controller.PanelGameConstants;
 import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import javax.swing.AbstractAction.*;
 import javax.swing.JFrame;
+import model.gameEngine.GameConstants;
+import model.sea.Sea;
 
 /**
  * Main window of the game
@@ -33,9 +33,9 @@ public class LifeGameView extends JFrame {
 
         //observer
         ButtonObserver bo = new ButtonObserver();
-
         //panel
-        PanelGame pg = new PanelGame();
+        GameConstants gc = new GameConstants();
+        PanelGame pg = new PanelGame(gc);
         //gameButton
         PanelGameButtons pgb = new PanelGameButtons(bo);
         //gameConstants panel

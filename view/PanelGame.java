@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
+import model.gameEngine.GameConstants;
+import model.sea.Sea;
 
 /**
  * Class JPanel Display sea,shark and sardine
@@ -19,9 +21,9 @@ public class PanelGame extends JPanel{
     private static final int BLOCK_SIZE = 10;
     
     
-	public PanelGame(){
+	public PanelGame(GameConstants gc){
             initPanel();
-            this.setSize(530, 530);
+            this.setSize(gc.getSeaLenght(), gc.getSeaWidth());
            
             gameBoardSize = new Dimension(getSize().width/BLOCK_SIZE-2, getSize().height/BLOCK_SIZE-2);
              System.out.println("size largeur : "+getSize().height);
