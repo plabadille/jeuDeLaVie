@@ -1,3 +1,10 @@
+/**
+ * A sea populating strategy used when the population rate is high
+ * generate coordinate of Fish next to each other then mix them n time randomly
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-01
+ */
+
 package model.sea.populate;
 
 import model.fish.Fish;
@@ -71,6 +78,10 @@ public class PermutationRandom implements IStrategyPopulate {
 		
 	}
 	
+	/**
+     * Method used to update coordinate for each Fish before the random (when they are assign next to each other)
+     * Used because there's two type of Fish and to coordinate the line changement.
+     */
 	private void refreshCoordinate() {
 		
 		if (this.y == this.xLenght) {

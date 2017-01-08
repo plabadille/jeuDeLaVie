@@ -1,3 +1,9 @@
+/**
+ * A State for a Teenagers Sharks
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-01
+ */
+
 package model.fish.behaviour;
 
 import model.gameEngine.GameConstants;
@@ -14,6 +20,11 @@ public class TeenagerStrategy implements IStateBehaviour {
 	private int callNumber; //can be consider as the age of the fish
 	private GameConstants gameConstants;
 	
+	/**
+     * Construct the Teenager State
+     * Dynamically change State to Adult when the age is reached
+     * @param gc <GameConstants> An instance containing every Game Constants of the current game
+     */
 	public TeenagerStrategy(GameConstants gc) {
 		this.gameConstants = gc;
 		this.callNumber = this.gameConstants.getSharkIsTeenager();

@@ -1,3 +1,10 @@
+/**
+ * A sea populating strategy used when the population rate is medium
+ * generate coordinate of Fish by first retrieving every available cell of the sea and then randomly choose a cell.
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-01
+ */
+
 package model.sea.populate;
 
 import java.util.ArrayList;

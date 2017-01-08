@@ -1,7 +1,12 @@
+/**
+ * A class for representing a Sardine
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-01
+ */
+
 package model.fish;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import model.gameEngine.GameConstants;
 import model.sea.Sea;
@@ -12,16 +17,11 @@ public class Sardine extends Fish {
         super(gc, x, y);
     }
 
-    /**
-     * Method which consist of moving Sardine randomly
-     *
-     * @param sea
-     */
     @Override
     protected void move(Sea sea) {
 
         ArrayList<Direction> directionRandomTable;
-        directionRandomTable = new ArrayList();
+        directionRandomTable = new ArrayList<Direction>();
         int x = 0, y = 0;
         Direction moveChoice;
         //testrécupération des coordonnées
@@ -35,7 +35,7 @@ public class Sardine extends Fish {
                 directionRandomTable.add(e.getKey());
             }
         }
-        moveChoice = randomSquaresPossible(directionRandomTable);
+        moveChoice = randomlyChooseMove(directionRandomTable);
         System.out.println("Direction tirée au sort : " + moveChoice.name() + " x:[" + moveChoice.getDirectionX() + "] y : [" + moveChoice.getDirectionY() + "]");
         x = coordinateX + moveChoice.getDirectionX();
         y = coordinateY + moveChoice.getDirectionY();
@@ -43,12 +43,12 @@ public class Sardine extends Fish {
     }
 
     /**
-     * Method which consist of drawing a lot a direction among the free squares
-     *
-     * @param d
-     * @return a randomDirection
+     * Method which consist of choosing a direction randomly
+     * The positions given always led to empty cells.
+     * @param d <ArrayList<Direction>> ArrayList of move going to empty cell.
+     * @return randomDirection <Direction> The randomly choosen direction
      */
-    private Direction randomSquaresPossible(ArrayList<Direction> d) {
+    private Direction randomlyChooseMove(ArrayList<Direction> d) {
         //drawing a lot of direction
         int max = d.size();
         int randomDraw = (int) (Math.random() * (max));
@@ -59,24 +59,11 @@ public class Sardine extends Fish {
 
     }
 
-    /**
-     * Method which consit of creating new instance of sardine verifying empty
-     * squares in neighbourhood, procreate only in empty square.
-     *
-     * @param sea
-     */
     @Override
     protected void giveBirth(Sea sea){
         super.giveBirth(sea,gameConstants.getSardineSpawnAge(), gameConstants.getSardineSpawnRatio());
     }
 
-
-    /**
-     * Method to remove fish which are dead
-     *
-     * @param sea
-     * @return
-     */
     @Override
     public boolean dead(Sea sea) {
         if (this.age > gameConstants.getSardineDeathAge()) {
@@ -84,23 +71,6 @@ public class Sardine extends Fish {
             return true;
         }
         return false;
-    }
-    //getter & setter
-
-    public int getCoordinateX() {
-        return coordinateX;
-    }
-
-    public int getCoordinateY() {
-        return coordinateY;
-    }
-
-    public void setCoordinateX(int coordinateX) {
-        this.coordinateX = coordinateX;
-    }
-
-    public void setCoordinateY(int coordinateY) {
-        this.coordinateY = coordinateY;
     }
 
 }

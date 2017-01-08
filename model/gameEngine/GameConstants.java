@@ -1,8 +1,13 @@
+/**
+ * A class for representing every constants needed by the game.
+ * The main constructor build the game with default constants.
+ * The others constructors are here to let the user set up the constants or some constants himself
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-03
+ */
+
 package model.gameEngine;
 
-//This class handle all the constants needed to run the game. 
-//The main constructor build the game with the static final under there, if you want to change the default settings, change them.
-//The other constructor are here to let the user to set up the constants by himself.
 public class GameConstants {
 
     //Default settings:
@@ -20,8 +25,7 @@ public class GameConstants {
     private static final int SHARK_STARVING_TIME = 3;
     private static final int SHARK_SPAWN_AGE = 5;
     private static final int SHARK_SPAWN_RATIO = 1;
-    private static final int SHARK_IS_YOUNG = 2;
-    private static final int SHARK_IS_TEENAGER = 4;
+    private static final int SHARK_IS_TEENAGER = 3;
     private static final int SHARK_IS_ADULT = 6;
     
 
@@ -36,10 +40,12 @@ public class GameConstants {
     private int sharkStarvingTime;
     private int sharkSpawnAge;
     private int sharkSpawnRatio;
-    private int sharkIsYoung;
     private int sharkIsTeenager;
     private int sharkIsAdult;
-
+    
+    /**
+     * Default constructor using the default constants
+     */
     //Default constructor:
     public GameConstants() {
         //sea default constants
@@ -56,13 +62,27 @@ public class GameConstants {
         this.sharkDeathAge = SHARK_DEATH_AGE;
         this.sharkSpawnAge = SHARK_SPAWN_AGE;
         this.sharkSpawnRatio = SHARK_SPAWN_RATIO;
-        this.sharkIsYoung = SHARK_IS_YOUNG;
         this.sharkIsTeenager = SHARK_IS_TEENAGER;
         this.sharkIsAdult = SHARK_IS_ADULT;
     }
-
-    //Constructor using client info:
-    public GameConstants(int seaWidth, int seaLenght, int seaSardineNumber, int seaSharkNumber, int sardineDeathAge, int sardineSpawnAge, int sardineSpawnRatio, int sharkDeathAge, int sharkStarvingTime, int sharkSpawnAge, int sharkSpawnRatio, int sharkIsYoung, int sharkIsTeenager, int sharkIsAdult) {
+    
+    /**
+     * Constructor using constants choose by the user
+     * @param seaWidth <int> width of the sea
+     * @param seaLenght <int> lenght of the sea
+     * @param seaSardineNumber <int> initial number of sardine in the sea
+     * @param seaSharkNumber <int> initial number of shark in the sea
+     * @param sardineDeathAge <int> death age of sardine
+     * @param sardineSpawnAge <int> reproduction age of sardine
+     * @param sardineSpawnRatio <int> delay to reproduce of sardine
+     * @param sharkDeathAge <int> death age of shark
+     * @param sharkStarvingTime <int> number of cycle a shark can survive without eating
+     * @param sharkSpawnAge <int> reproduction age of shark
+     * @param sharkSpawnRatio <int> delay to reproduce of shark
+     * @param sharkIsTeenager <int> age when a child shark became Teenager (alter hunting strategy)
+     * @param sharkIsAdult <int> age when a teenager shark became Adult (alter hunting strategy)
+     */
+    public GameConstants(int seaWidth, int seaLenght, int seaSardineNumber, int seaSharkNumber, int sardineDeathAge, int sardineSpawnAge, int sardineSpawnRatio, int sharkDeathAge, int sharkStarvingTime, int sharkSpawnAge, int sharkSpawnRatio, int sharkIsTeenager, int sharkIsAdult) {
         //sea default constants
         this.seaWidth = seaWidth;
         this.seaLenght = seaLenght;
@@ -75,25 +95,51 @@ public class GameConstants {
         //shark default constants
         this.sharkDeathAge = sharkDeathAge;
         this.sharkStarvingTime = sharkStarvingTime;
-        this.sharkSpawnAge = sharkDeathAge;
+        this.sharkSpawnAge = sharkSpawnAge;
         this.sharkSpawnRatio = sharkSpawnRatio;
-        this.sharkIsYoung = sharkIsYoung;
         this.sharkIsTeenager = sharkIsTeenager;
         this.sharkIsAdult = sharkIsAdult;
 
     }
 
-    //Constructors using partials client info:
-    public GameConstants(int seaSardineNumber, int seaSharkNumber, int sardineDeathAge, int sardineSpawnAge, int sardineSpawnRatio, int sharkDeathAge, int sharkStarvingTime, int sharkSpawnAge, int sharkSpawnRatio, int sharkIsYoung, int sharkIsTeenager ,int sharkIsAdult) {
-        this(SEA_WIDTH, SEA_LENGTH, seaSardineNumber, seaSharkNumber, sardineDeathAge, sardineSpawnAge, sardineSpawnRatio, sharkDeathAge, sharkStarvingTime, sharkSpawnAge, sharkSpawnRatio, sharkIsYoung, sharkIsTeenager, sharkIsAdult);
-    }
-
-    public GameConstants(int seaSardineNumber, int seaSharkNumber, int seaWidth, int seaLenght) {
-        this(seaWidth, seaLenght, seaSardineNumber, seaSharkNumber, SARDINE_DEATH_AGE, SARDINE_SPAWN_AGE, SARDINE_SPAWN_RATIO, SHARK_DEATH_AGE, SHARK_STARVING_TIME, SHARK_SPAWN_AGE, SHARK_SPAWN_RATIO, SHARK_IS_YOUNG, SHARK_IS_TEENAGER, SHARK_IS_ADULT);
+    //Constructors using partials client info:  
+    /**
+     * Constructor using partials constants choose by the user and partial default constants
+     * @param seaSardineNumber <int> initial number of sardine in the sea
+     * @param seaSharkNumber <int> initial number of shark in the sea
+     * @param sardineDeathAge <int> death age of sardine
+     * @param sardineSpawnAge <int> reproduction age of sardine
+     * @param sardineSpawnRatio <int> delay to reproduce of sardine
+     * @param sharkDeathAge <int> death age of shark
+     * @param sharkStarvingTime <int> number of cycle a shark can survive without eating
+     * @param sharkSpawnAge <int> reproduction age of shark
+     * @param sharkSpawnRatio <int> delay to reproduce of shark
+     * @param sharkIsTeenager <int> age when a child shark became Teenager (alter hunting strategy)
+     * @param sharkIsAdult <int> age when a teenager shark became Adult (alter hunting strategy)
+     */
+    public GameConstants(int seaSardineNumber, int seaSharkNumber, int sardineDeathAge, int sardineSpawnAge, int sardineSpawnRatio, int sharkDeathAge, int sharkStarvingTime, int sharkSpawnAge, int sharkSpawnRatio, int sharkIsTeenager ,int sharkIsAdult) {
+        this(SEA_WIDTH, SEA_LENGTH, seaSardineNumber, seaSharkNumber, sardineDeathAge, sardineSpawnAge, sardineSpawnRatio, sharkDeathAge, sharkStarvingTime, sharkSpawnAge, sharkSpawnRatio, sharkIsTeenager, sharkIsAdult);
     }
     
+    
+    /**
+     * Constructor using partials constants choose by the user and partial default constants
+     * @param seaWidth <int> width of the sea
+     * @param seaLenght <int> lenght of the sea
+     * @param seaSardineNumber <int> initial number of sardine in the sea
+     * @param seaSharkNumber <int> initial number of shark in the sea
+     */
+    public GameConstants(int seaSardineNumber, int seaSharkNumber, int seaWidth, int seaLenght) {
+        this(seaWidth, seaLenght, seaSardineNumber, seaSharkNumber, SARDINE_DEATH_AGE, SARDINE_SPAWN_AGE, SARDINE_SPAWN_RATIO, SHARK_DEATH_AGE, SHARK_STARVING_TIME, SHARK_SPAWN_AGE, SHARK_SPAWN_RATIO, SHARK_IS_TEENAGER, SHARK_IS_ADULT);
+    }
+    
+    /**
+     * Constructor using partials constants choose by the user and partial default constants
+     * @param seaSardineNumber <int> initial number of sardine in the sea
+     * @param seaSharkNumber <int> initial number of shark in the sea
+     */
     public GameConstants(int seaSardineNumber, int seaSharkNumber) {
-        this(SEA_WIDTH, SEA_LENGTH, seaSardineNumber, seaSharkNumber, SARDINE_DEATH_AGE, SARDINE_SPAWN_AGE, SARDINE_SPAWN_RATIO, SHARK_DEATH_AGE, SHARK_STARVING_TIME, SHARK_SPAWN_AGE, SHARK_SPAWN_RATIO, SHARK_IS_YOUNG, SHARK_IS_TEENAGER, SHARK_IS_ADULT);
+        this(SEA_WIDTH, SEA_LENGTH, seaSardineNumber, seaSharkNumber, SARDINE_DEATH_AGE, SARDINE_SPAWN_AGE, SARDINE_SPAWN_RATIO, SHARK_DEATH_AGE, SHARK_STARVING_TIME, SHARK_SPAWN_AGE, SHARK_SPAWN_RATIO, SHARK_IS_TEENAGER, SHARK_IS_ADULT);
     }
     
     //getter and setter:
@@ -175,14 +221,6 @@ public class GameConstants {
 
     public void setSharkSpawnRatio(int sharkSpawnRatio) {
         this.sharkSpawnRatio = sharkSpawnRatio;
-    }
-
-    public int getSharkIsYoung() {
-        return sharkIsYoung;
-    }
-
-    public void setSharkIsYoung(int sharkIsYoung) {
-        this.sharkIsYoung = sharkIsYoung;
     }
 
     public int getSharkIsAdult() {

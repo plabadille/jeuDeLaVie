@@ -1,3 +1,9 @@
+/**
+ * A State for a Adult Sharks
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-01
+ */
+
 package model.fish.behaviour;
 
 import java.util.ArrayList;

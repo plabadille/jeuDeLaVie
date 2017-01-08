@@ -1,3 +1,10 @@
+/**
+ * An abstract class for some populate strategy
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2017-01-06
+ */
+
+
 package model.sea.populate;
 
 import model.fish.Fish;
@@ -35,6 +42,9 @@ public abstract class AbstractPopulateStrategy implements IStrategyPopulate {
 		
 	}
 	
+	/**
+     * Method used to generateCoordinate randomly depending on the strategy used
+     */
 	protected abstract void generateCoordinate();
 	
 }

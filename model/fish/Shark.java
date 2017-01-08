@@ -1,3 +1,9 @@
+/**
+ * A class for representing a Shark
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-01
+ */
+
 package model.fish;
 
 import model.gameEngine.GameConstants;
@@ -12,7 +18,7 @@ public class Shark extends Fish {
 
     private Context context;
     private int starvingTime;
-
+    
     public Shark(GameConstants gc, int x, int y) {
         super(gc, x, y);
         this.context = new Context(this.gameConstants);
@@ -36,8 +42,11 @@ public class Shark extends Fish {
     protected void move(Sea sea) {
         this.context.move(sea, this);
     }
-
-    //used by strategy of the pattern state in some case but in different strategy.
+    
+    /**
+     * Method used by shark State in some case but in different strategy to do a random move.
+     * @param sea <Sea> An instance containing the Sea.
+     */
     public void randomMove(Sea sea) {
         HashMap<Direction, Fish> neighborhood = sea.getNeighborhood(this);
         ArrayList<Direction> directionRandomTable = new ArrayList<Direction>();
@@ -69,16 +78,24 @@ public class Shark extends Fish {
             sea.moveFish(this, x, y);
         }
     }
-
-    //call by move() when the Shark eat
+    
+    /**
+     * Method used when a Shark eat a Sardine
+     * Call by move() or randomMove()
+     * @param sardine <Fish> Containing the instance of the Sardine going to be eaten
+     * @param sea <Sea> An instance containing the Sea.
+     */
     public void eat(Fish sardine, Sea sea) {
         if (sardine != null) {
             this.starvingTime = gameConstants.getSharkStarvingTime();
             sea.deleteFish(sardine);
         }
     }
-
-    //call by move() when the Shark doesn't eat
+    
+    /**
+     * Method used when a Shark doesn't eat a Sardine (move into an empty cell)
+     * Call by move() or randomMove()
+     */
     public void starve() {
         this.starvingTime--;
     }

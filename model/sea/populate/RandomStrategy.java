@@ -1,3 +1,10 @@
+/**
+ * A sea populating strategy used when the population rate is low
+ * generate the coordinate by randomly choose a cell. If the cell choosen is already taken it take the one next to it.
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-01
+ */
+
 package model.sea.populate;
 
 public class RandomStrategy extends AbstractPopulateStrategy {
