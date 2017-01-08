@@ -1,4 +1,9 @@
 package controller;
+/**
+ * Class Observer
+ * @author Pierre Labadille, Alexandre Ducreux
+ * @since 2016-12-01
+ */
 
 public class ButtonObserver {
 	
