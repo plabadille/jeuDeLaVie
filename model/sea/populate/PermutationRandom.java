@@ -15,13 +15,15 @@ import model.gameEngine.GameConstants;
 public class PermutationRandom implements IStrategyPopulate {
 	
 	private Fish [][] populatedSea;
-	private int xLenght;
+	private int xSize;
+	private int ySize;
 	private int x;
 	private int y;
 	
 	public Fish [][] populateSea(GameConstants gc, Fish [][] sea) {
 		
-		this.xLenght = gc.getSeaLenght();
+		this.xSize = gc.getSeaLenght()-1;
+		this.ySize = gc.getSeaWidth()-1;
 		this.x = 0;
 		this.y = 0;
 		this.populatedSea = sea;
@@ -48,13 +50,13 @@ public class PermutationRandom implements IStrategyPopulate {
 		int y2;
 		Fish tmp;
 		
-		for(int x = 0; x < this.populatedSea.length; x++) {
-        	for(int y = 0; y < this.populatedSea[x].length; y++) {
+		for(int x = 0; x < this.xSize; x++) {
+        	for(int y = 0; y < this.ySize; y++) {
         		
-        		x1 = (int) (Math.random()*this.populatedSea.length);
-                x2 = (int) (Math.random()*this.populatedSea.length);
-                y1 = (int) (Math.random()*this.populatedSea[x].length);
-                y2 = (int) (Math.random()*this.populatedSea[x].length);
+        		x1 = (int) (Math.random()*this.xSize);
+                x2 = (int) (Math.random()*this.xSize);
+                y1 = (int) (Math.random()*this.ySize);
+                y2 = (int) (Math.random()*this.ySize);
                 
                 //we refresh the coordinate if a fish is permuted
                 if (this.populatedSea[x1][y1] != null) {
@@ -84,7 +86,7 @@ public class PermutationRandom implements IStrategyPopulate {
      */
 	private void refreshCoordinate() {
 		
-		if (this.y == this.xLenght) {
+		if (this.y == this.ySize) {
 			this.x++;
 			this.y = 0;
 		} else {

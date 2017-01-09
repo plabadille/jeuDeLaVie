@@ -19,15 +19,17 @@ public class LifeGame {
 	private int round;
 	private boolean twoSpeciesALive;
 	private String winnerSpecies;
+	private String output;
 	
 	/**
      * Builds a new LifeGame
      */
-	public LifeGame() {
-		this.gameConstants = new GameConstants();
+	public LifeGame(GameConstants gc) {
+		this.gameConstants = gc;
 		this.sea = new Sea(this.gameConstants);
 		this.round = 0;
 		this.twoSpeciesALive = true;
+		this.output = "Game graphical output\n";
 	}
 	
 	/**
@@ -37,6 +39,7 @@ public class LifeGame {
 	public void quickRunGame() {
 		while(this.twoSpeciesALive) {
 			if (this.checkIfTwoSpeciesAlive()) {
+				this.output += this.sea.logOutput(this.round);
 				System.out.println("\n===============================================\n");
 				System.out.println("Lauching the cycle " + this.round);
 				System.out.println("Still " + this.sea.getSharkAlive() + " shark alive and " + this.sea.getSardineAlive() + " sardine alive");
@@ -120,7 +123,9 @@ public class LifeGame {
 			System.out.println("The species who survive is the  " + this.winnerSpecies + "!");
 		} else {
 			System.out.println("No species survive... They both die in the same cycle.");
-		}		
+		}
+		this.output += this.sea.logOutput(this.round);
+		System.out.println(this.output);
 	}
 
 }

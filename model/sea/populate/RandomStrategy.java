@@ -11,15 +11,14 @@ public class RandomStrategy extends AbstractPopulateStrategy {
 	
 	protected void generateCoordinate() {
 		
-		int x = (int) (Math.random() * this.populatedSea.length);
-		int y = (int) (Math.random() * this.populatedSea[x].length);
-		
+		int x = (int) (Math.random() * this.populatedSea.length-1);
+		int y = (int) (Math.random() * this.populatedSea[x].length-1);
 		//If a Fish is already in, we take the next one until we find empty coordinate.
 		while (this.populatedSea[x][y] != null) {
-			if (y < this.populatedSea[x].length) {
+			if (y < this.populatedSea[x].length-1) {
 				y++;
 			} else {
-				if (x < this.populatedSea.length) {
+				if (x < this.populatedSea.length-1) {
 					y = 0;
 					x++;
 				} else {

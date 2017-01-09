@@ -15,11 +15,28 @@ public class FreeCellRandom extends AbstractPopulateStrategy {
 	
 	protected void generateCoordinate()  {
 		
-		//At the first call we create the row of the list of list
 		if (this.availableCoordinate.isEmpty()) {
-			for (int x = 0; x < this.populatedSea.length; x++) {
-				this.availableCoordinate.add(new ArrayList<Integer>());
-			}
+			this.findEmptyCoordinate();
+		}
+
+		//we do the random:
+		int x = (int) (Math.random() * this.availableCoordinate.size());
+		int y = (int) (Math.random() * this.availableCoordinate.get(x).size());
+		
+		//Then we remove the coordinate from the array and set the attr
+		this.x = x;
+		this.y = this.availableCoordinate.get(x).get(y); //otherwise we will got the index and not the value.
+		this.availableCoordinate.get(x).remove(y);
+
+	}
+	
+	/**
+     * Method used to store empty cells in this.availableCoordinate
+     */
+	private void findEmptyCoordinate() {
+		//At the first call we create the row of the list of list
+		for (int x = 0; x < this.populatedSea.length; x++) {
+			this.availableCoordinate.add(new ArrayList<Integer>());
 		}
 		
 		//when coordinate are empty, we store them if they're not already store
@@ -30,19 +47,6 @@ public class FreeCellRandom extends AbstractPopulateStrategy {
         				this.availableCoordinate.get(x).add(y);
         	}
 		}
-		
-		//we do the random:
-		int x = (int) (Math.random() * this.populatedSea.length);
-		while (!this.availableCoordinate.get(x).isEmpty()) { //just in case every slot of a column are already taken
-			x = (int) (Math.random() * this.populatedSea.length);
-		}
-		int y = (int) (Math.random() * this.availableCoordinate.get(x).size());
-		
-		//Then we remove the coordinate from the array and set the attr
-		this.availableCoordinate.get(x).remove(y);
-		this.x = x;
-		this.y = this.availableCoordinate.get(x).get(y); //otherwise we will got the index and not the value.
-
 	}
 	
 }

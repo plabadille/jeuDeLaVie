@@ -241,4 +241,24 @@ public class Sea {
 	public int getSharkAlive() {
 		return sharkAlive;
 	}
+	
+	public String logOutput(int round) {
+		int column = this.sea.length;
+		int row = this.sea[0].length;
+		
+		String map = "Round " + round + "\n";
+		for (int x=0; x<column; x++) {
+			for (int y=0; y<row; y++) {
+				if (this.sea[x][y] == null) {
+					map += " .";
+				} else if (this.sea[x][y] instanceof Shark) {
+					map += " K";
+				} else {
+					map += " ø";
+				}	
+			}
+			map += "\n";
+		}
+		return map;
+	}
 }
