@@ -8,6 +8,8 @@
 
 package model.gameEngine;
 
+import static java.lang.Math.abs;
+
 public class GameConstants {
 
     //Default settings:
@@ -83,22 +85,23 @@ public class GameConstants {
      * @param sharkIsAdult <int> age when a teenager shark became Adult (alter hunting strategy)
      */
     public GameConstants(int seaWidth, int seaLenght, int seaSardineNumber, int seaSharkNumber, int sardineDeathAge, int sardineSpawnAge, int sardineSpawnRatio, int sharkDeathAge, int sharkStarvingTime, int sharkSpawnAge, int sharkSpawnRatio, int sharkIsTeenager, int sharkIsAdult) {
-        //sea default constants
-        this.seaWidth = seaWidth;
-        this.seaLenght = seaLenght;
-        this.seaSardineNumber = seaSardineNumber;
-        this.seaSharkNumber = seaSharkNumber;
+        //We take the absolute value to be sure all constants are positive
+    	//sea default constants
+        this.seaWidth = abs(seaWidth);
+        this.seaLenght = abs(seaLenght);
+        this.seaSardineNumber = abs(seaSardineNumber);
+        this.seaSharkNumber = abs(seaSharkNumber);
         //sardine default constants
-        this.sardineDeathAge = sardineDeathAge;
-        this.sardineSpawnAge = sardineSpawnAge;
-        this.sardineSpawnRatio = sardineSpawnRatio;
+        this.sardineDeathAge = abs(sardineDeathAge);
+        this.sardineSpawnAge = abs(sardineSpawnAge);
+        this.sardineSpawnRatio = abs(sardineSpawnRatio);
         //shark default constants
-        this.sharkDeathAge = sharkDeathAge;
-        this.sharkStarvingTime = sharkStarvingTime;
-        this.sharkSpawnAge = sharkSpawnAge;
-        this.sharkSpawnRatio = sharkSpawnRatio;
-        this.sharkIsTeenager = sharkIsTeenager;
-        this.sharkIsAdult = sharkIsAdult;
+        this.sharkDeathAge = abs(sharkDeathAge);
+        this.sharkStarvingTime = abs(sharkStarvingTime);
+        this.sharkSpawnAge = abs(sharkSpawnAge);
+        this.sharkSpawnRatio = abs(sharkSpawnRatio);
+        this.sharkIsTeenager = abs(sharkIsTeenager);
+        this.sharkIsAdult = abs(sharkIsAdult);
 
     }
 

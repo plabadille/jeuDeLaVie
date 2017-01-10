@@ -246,7 +246,7 @@ public class Sea {
 		int column = this.sea.length;
 		int row = this.sea[0].length;
 		
-		String map = "Round " + round + "\n";
+		String map = "Round " + round + " - Sharks: "+this.getSharkAlive()+", Sardines: "+this.getSardineAlive()+"\n\n";
 		for (int x=0; x<column; x++) {
 			for (int y=0; y<row; y++) {
 				if (this.sea[x][y] == null) {
