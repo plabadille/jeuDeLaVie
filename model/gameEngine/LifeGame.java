@@ -36,7 +36,7 @@ public class LifeGame {
 		this.twoSpeciesALive = true;
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date = new Date();
-		this.output = "Life game graphical output\nBy Pierre Labadille & Alexandre Ducreux\nJavaProject- M2-DNR2i, Université de Caen Normandie\nLauch the "+dateFormat.format(date)+"\n\n";
+		this.output = "Life game graphical output\nBy Pierre Labadille & Alexandre Ducreux\nJavaProject- M2-DNR2i, University of Caen Normandie\nLauch the "+dateFormat.format(date)+"\n\n";
 	}
 	
 	/**

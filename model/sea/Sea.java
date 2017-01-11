@@ -246,7 +246,7 @@ public class Sea {
 		int column = this.sea.length;
 		int row = this.sea[0].length;
 		
-		String map = "Round " + round + " - Sharks: "+this.getSharkAlive()+", Sardines: "+this.getSardineAlive()+"\n\n";
+		String map = "Round " + round + " - Sharks(K): "+this.getSharkAlive()+", Sardines(S): "+this.getSardineAlive()+"\n";
 		for (int x=0; x<column; x++) {
 			for (int y=0; y<row; y++) {
 				if (this.sea[x][y] == null) {
@@ -254,11 +254,12 @@ public class Sea {
 				} else if (this.sea[x][y] instanceof Shark) {
 					map += " K";
 				} else {
-					map += " ø";
+					map += " S";
 				}	
 			}
 			map += "\n";
 		}
+		map += "\n";
 		return map;
 	}
 }
